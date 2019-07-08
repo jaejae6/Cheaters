@@ -1,6 +1,6 @@
-# Project 3 - *Cheaters*
+# Project - *Cheaters*
 
-**Cheaters** is a code that scans multiple documents and displays how many matches two documents have in common
+**Cheaters** is a program that reads through multiple documents and tries to determine if cheating had occured. For each document in the folder, every 6 words are grouped together into 1 string where all the letters are capatialized and there are no spaces or punctuation. The string gets inserted into a hash table. If two documents had more than 200 matches, it displays the names of both files and how many matches they had in common.
 
 Time spent: **3** days spent in total
 

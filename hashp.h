@@ -1,6 +1,20 @@
-//
-// Created by bethe on 4/29/2019.
-//
+// Created by Jaelyn Bethea on 4/10/2019.
+// //
+// /* Student information for project:
+//  *
+//  * Replace <NAME> with your name.
+//  *
+//  * On my honor, Jaelyn Bethea, this programming project is my own work
+//  * and I have not provided this code to any other student.
+//  *
+//  * Name: Jaelyn Bethea
+//  * email address: betheajaelyn@utexas.edu
+//  * UTEID: jnb2634
+//  * Section 5 digit ID: 15975
+//  *
+//  */
+
+
 
 #ifndef UNTITLED8_HASHP_H
 #define UNTITLED8_HASHP_H
@@ -43,6 +57,7 @@ public:
 
     void displayHash();
 
+    //displays the files that have over 200 matches 
     void displayArray(int size, vector<string> file);
 };
 
@@ -50,7 +65,7 @@ public:
 
 
 
-
+//constructor for the hash table; hash table is created by using a linked list
 Hash::Hash(int b)
 {
     this->BUCKET = b;
@@ -64,12 +79,15 @@ Hash::Hash(int b)
 
 }
 
+//function that inserts string into the hast table
 void Hash::insertItem(int fileNum , string x)
 {
     Node *test = new Node;
+    
+    //gets the 'key' for the hash table
     int index = hashFunction(x);
 
-
+    //checking to see there was anything at the head of the linked list
     if(array[index] == NULL)
     {
         Node *holder;
@@ -78,6 +96,7 @@ void Hash::insertItem(int fileNum , string x)
         holder = test;
         array[index] = holder;
     }
+    //adds to the linked list
     else
     {
         Node *holder = array[index];
@@ -100,6 +119,7 @@ void Hash::deleteItem(string key)
     }
 }
 
+//creates the key 
 int Hash:: hashFunction(string x)
 {
     unsigned long long  result = 0;
@@ -126,25 +146,31 @@ void Hash::displayHash() {
         cout << endl;
     }
 }
+
+
+//displays the files that have more than 200 matches
 void Hash::displayArray( int size, vector<string>file ) {
 
+    //creates a 2D array to hold the number of matches
     int array2[size][size];
 
 
 
-
+    //makes sure all matches start off with 0
     for(int i =0; i<size; i++)
     {
         for(int j =0; j<size; j++)
             array2[i][j] = 0;
     }
 
+    
     for(int i =0; i<BUCKET; i++)
     {
         Node *temp = array[i];
         int count;
         //Node *temp1 = array[i]->next;
 
+        //traverses through the linked list 
         while(temp != NULL)
         {
             Node *temp1 = temp->next;
@@ -161,7 +187,7 @@ void Hash::displayArray( int size, vector<string>file ) {
 
     }
 
-
+    //displays the file names that have over 200 matches in-common 
     for (int i = 0; i < size; i++)
     {
 

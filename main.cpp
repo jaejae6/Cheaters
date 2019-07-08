@@ -21,7 +21,7 @@ using namespace std;
 
 
 
-/*function... might want it in some class?*/
+/*function... that reads the documents from the folder*/
 int getdir (string dir, vector<string> &files)
 {
     DIR *dp;
@@ -37,6 +37,9 @@ int getdir (string dir, vector<string> &files)
     closedir(dp);
     return 0;
 }
+
+
+
 
 int main(int argc, char *argv[]) {
    // std::cout << "Hello, World!" << std::endl;
@@ -55,8 +58,11 @@ int main(int argc, char *argv[]) {
    // }
 
 
+    //creates hash constructor 
     Hash h(100000);
-    //std::queue<string> work;
+    
+    
+    //reading in documents and putting them into the vector
     ifstream inFile;
     for(int i =0; i <files.size(); i++) {
 
@@ -84,8 +90,7 @@ int main(int argc, char *argv[]) {
 
 
 
-        //for (int k=  0; please[k+6] != wordsInFile.back(); k++)
-
+//looping through each file and separating into 6 words and creating the kkey and putting it into the hashmap 
         while(!wordsInFile.empty())
         {
             int k =0;
@@ -124,15 +129,6 @@ int main(int argc, char *argv[]) {
     }
      h.displayArray(files.size(), files);
 
-/*
-    cout << work.size() << endl;
 
-    while(!work.empty())
-    {
-        std:: cout << work.front() << endl;
-        work.pop();
-        std:: cout <<endl;
-    }
-*/
     return 0;
 }
